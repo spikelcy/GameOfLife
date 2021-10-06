@@ -2,13 +2,19 @@ package mainPackage;
 
 import javax.swing.JPanel;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 
 /**
  * 
@@ -36,8 +42,6 @@ public class Options extends JPanel {
 		
 		JPanel listPane = new JPanel();
 		listPane.setLayout(new BoxLayout(listPane, BoxLayout.PAGE_AXIS));
-		JLabel lblNewLabel = new JLabel("Testing");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 
 		JPanel grid = new JPanel();
@@ -50,15 +54,39 @@ public class Options extends JPanel {
 				board[row][column] = sq;
 				//tempBoard[row][column] = new Square(row, column);
 				
+				//add mouse click lister to switch colour if clicked
+				board[row][column].addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						//sets it to change colour too.
+						sq.printCords();
+						sq.repaint();
+						
+						main.validate();
+						main.repaint();
+
+						
+					}
+				});
+				
+				
+				
 				//add to panel
 				grid.add(sq);
 			}
 		}
 		
-		
-		listPane.add(lblNewLabel);
+		JButton btnNewButton = new JButton("Change Colour");
+		btnNewButton.setHorizontalAlignment(SwingConstants.LEADING);
+		listPane.add(btnNewButton);
 		listPane.add(Box.createRigidArea(new Dimension(0,5)));
 		listPane.add(grid);
+		
+	    btnNewButton.addActionListener(new ActionListener(){  
+	        public void actionPerformed(ActionEvent e){  
+	                    
+	        }  
+	        });  
 		
 		
 		this.add(listPane);

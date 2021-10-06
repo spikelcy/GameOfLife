@@ -20,6 +20,7 @@ public class Square extends JComponent {
 	private char content;
 	private int row;
 	private int col;
+	private int colour = 0; // Black = 1, White = 0
 	private final int SIZE = Options.SQUARE_SIZE;
 	
 	/**
@@ -33,6 +34,18 @@ public class Square extends JComponent {
 		this.row = row;
 		this.col = col;
 	}
+	
+	public void printCords() {
+		System.out.println("Row:"+row+"Col:"+col);
+		if (colour == 0){
+			colour = 1;
+		}else {
+			colour = 0;
+		}
+		
+	}
+	
+	
 	/**
 	 * Paints the outline if the middle square as proof of change.
 	 */
@@ -40,14 +53,36 @@ public class Square extends JComponent {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if (row==7 && col==7) {
-			g.setColor(Color.red);
-			g.drawRect(0, 0, SIZE+1, SIZE-2);
+		if (colour == 0) {
+			g.setColor(Color.white);
+			g.fillRect(0, 0, SIZE+1, SIZE-2);
+			//this.colour = 1;
+			
 		} else {
 			g.setColor(Color.black);
-			g.drawRect(0, 0, SIZE+1, SIZE-2);
+			g.fillRect(0, 0, SIZE+1, SIZE-2);
+			//this.colour = 0;
 		}
 
 	}
+	
+	
+	
+	/**
+	 * Changes colour of square.
+	 * If red, change to black and if black, change to red.
+	 */
+	
+	public void changeColour(Graphics g) {
+		if (colour == 0) {
+			g.setColor(Color.white);
+			g.fillRect(0, 0, SIZE+1, SIZE-2);
+		} else {
+			g.setColor(Color.black);
+			g.fillRect(0, 0, SIZE+1, SIZE-2);
+		}
+
+	}
+	
 	
 }
