@@ -21,6 +21,12 @@ public class Square extends JComponent {
 	private int row;
 	private int col;
 	private int colour = 0; // Black = 1, White = 0
+	public int getColour() {
+		return colour;
+	}
+
+
+
 	private final int SIZE = Options.SQUARE_SIZE;
 	
 	/**

@@ -76,13 +76,44 @@ public class Options extends JPanel {
 			}
 		}
 		
-		JButton btnNewButton = new JButton("Change Colour");
+		JLabel lblNewLabel = new JLabel("Game of Life");
+		lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		listPane.add(lblNewLabel);
+		
+		JPanel buttonGrid = new JPanel();
+		buttonGrid.setSize(20, 20);
+		buttonGrid.setLayout(new BoxLayout(buttonGrid, BoxLayout.X_AXIS));
+		//buttonGrid.setLayout(new GridLayout(1, 2));
+		
+		
+		JButton btnNewButton = new JButton("Start");
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEADING);
-		listPane.add(btnNewButton);
+		buttonGrid.add(btnNewButton);
+		
+		
+		//Change black squares to white(test)
+		btnNewButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				board = GameLogic.changeColour(board);
+				main.validate();
+				main.repaint();
+				
+				
+			}
+		});
+		
+		
+		
+		JButton btnNewButton_1 = new JButton("Stop");
+		buttonGrid.add(btnNewButton_1);
+		listPane.add(buttonGrid);
 		listPane.add(Box.createRigidArea(new Dimension(0,5)));
 		listPane.add(grid);
 		
-	    btnNewButton.addActionListener(new ActionListener(){  
+	    btnNewButton_1.addActionListener(new ActionListener(){  
 	        public void actionPerformed(ActionEvent e){  
 	                    
 	        }  
