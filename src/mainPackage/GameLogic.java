@@ -41,6 +41,9 @@ public class GameLogic {
 		int row = sq.getWidth();
 		int col = sq.getHeight();
 		
+    	int status = sq.getColour();
+    	int liveN = 0;
+		int deadN = 0;
 		
 		int rowStart  = Math.max( row - 1, START_OF_GRID   );
 		int rowFinish = Math.min( row + 1, BOARD_SIZE - 1 );
@@ -49,12 +52,33 @@ public class GameLogic {
 
 		for ( int curRow = rowStart; curRow <= rowFinish; curRow++ ) {
 		    for ( int curCol = colStart; curCol <= colFinish; curCol++ ) {
+				
+		    	//if current neighbour is black, count up liveN.
+		    	// if current neighbour is white, count up deadN.
 		    	if (board[curRow][curCol].getColour() == 1) {
-		    		
+		    		liveN ++;
+		    	}else {
+		    		deadN ++;
 		    	}
 		    }
 		}
 		
+		// IF cell is dead, only return 1 if there are exactly 3 neighbours, else
+		// return 1 only if exactly 2 or 3.
+		if (status == 0) {
+			
+			if (liveN == 3) {
+				return 1;
+			}
+		}else {
+		
+		if ( liveN == 2 || liveN == 3) {
+			return 1;
+		}
+		
+		}
+		
+		// If none of the requirements met, return 0 to show death.
 		return 0;
 		
 	}
