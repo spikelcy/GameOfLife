@@ -43,6 +43,8 @@ public class Square extends JComponent {
 	
 	public void printCords() {
 		System.out.println("Row:"+row+"Col:"+col);
+		
+		//changes statis of sqaure to black if its white
 		if (colour == 0){
 			colour = 1;
 		}else {
@@ -76,7 +78,7 @@ public class Square extends JComponent {
 	
 	/**
 	 * Changes colour of square.
-	 * If red, change to black and if black, change to red.
+	 * set it to its colour for now. so white = 0 and 1 = black
 	 */
 	
 	public void changeColour(Graphics g) {

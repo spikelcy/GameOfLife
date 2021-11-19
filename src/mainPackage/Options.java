@@ -93,11 +93,37 @@ public class Options extends JPanel {
 		
 		
 		//Change black squares to white(test)
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				board = GameLogic.changeColour(board);
+				for (int row = 0; row < BOARD_SIZE; row++) {
+					for (int column = 0; column < BOARD_SIZE; column++) {
+						
+						// check if the current square needs to be colour changed 
+						// 1 is alive, 0 is death
+						int check = GameLogic.checkNeighbours(board, board[row][column]);
+						
+						
+						// if square should be alive but is dead, repaint
+						if(check == 1 || board[row][column].getColour() == 0 ) {
+							board[row][column].printCords();
+							board[row][column].repaint();
+						}
+						
+						// if square should be dead but is alive, repaint.
+						if(check == 0 || board[row][column].getColour() == 1 ) {
+							board[row][column].printCords();
+							board[row][column].repaint();
+						}
+						
+						
+					}
+				}
+				
+				
+				//board = GameLogic.changeColour(board);
 				main.validate();
 				main.repaint();
 				

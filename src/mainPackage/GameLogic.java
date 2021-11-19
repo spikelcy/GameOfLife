@@ -33,6 +33,17 @@ public class GameLogic {
 		
 	}
 	
+
+	
+	//add looping method that goes thru each square and check neighbour of each square.
+	public static void step(Square[][] board) {
+		
+		for (int row = 0; row < BOARD_SIZE; row++) {
+			for (int column = 0; column < BOARD_SIZE; column++) {
+			}
+		}
+		
+	}
 	
 	
 	//TODO: Finish checking method
