@@ -62,6 +62,8 @@ public class Options extends JPanel {
 						sq.printCords();
 						sq.repaint();
 						
+						System.out.println(sq.getColour());
+						
 						main.validate();
 						main.repaint();
 
@@ -103,24 +105,40 @@ public class Options extends JPanel {
 						
 						// check if the current square needs to be colour changed 
 						// 1 is alive, 0 is death
-						int check = GameLogic.checkNeighbours(board, board[row][column]);
+						GameLogic.checkNeighbours(board, board[row][column]);
 						
 						
-						// if square should be alive but is dead, repaint
-						if(check == 1 || board[row][column].getColour() == 0 ) {
-							board[row][column].printCords();
-							board[row][column].repaint();
-						}
+
 						
-						// if square should be dead but is alive, repaint.
-						if(check == 0 || board[row][column].getColour() == 1 ) {
-							board[row][column].printCords();
-							board[row][column].repaint();
-						}
-						
+				
 						
 					}
 				}
+					
+					for (int row1 = 0; row1 < BOARD_SIZE; row1++) {
+						for (int column1 = 0; column1 < BOARD_SIZE; column1++) {
+						
+							// if square should be alive but is dead, repaint
+							if(board[row1][column1].getLive() == 1 && board[row1][column1].getColour() == 0 ) {
+								
+								board[row1][column1].printCords();
+								board[row1][column1].repaint();
+							}
+							
+							// if square should be dead but is alive, repaint.
+							if(board[row1][column1].getLive() == 0 && board[row1][column1].getColour() == 1 ) {
+								board[row1][column1].printCords();
+								board[row1][column1].repaint();
+							}
+							
+						
+						
+						}
+						
+				
+					}
+				
+			
 				
 				
 				//board = GameLogic.changeColour(board);

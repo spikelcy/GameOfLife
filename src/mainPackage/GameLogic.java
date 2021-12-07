@@ -47,12 +47,17 @@ public class GameLogic {
 	
 	
 	//TODO: Finish checking method
-	public static int checkNeighbours(Square[][] board, Square sq) {
+	public static void checkNeighbours(Square[][] board, Square sq) {
 		
-		int row = sq.getWidth();
-		int col = sq.getHeight();
+		int row = sq.getRow();
+		int col = sq.getCol();
 		
     	int status = sq.getColour();
+    	
+    	if(status == 1) {
+    		System.out.println("Column:"+col+"Row:"+row+"colour:"+status);
+		}
+    	
     	int liveN = 0;
 		int deadN = 0;
 		
@@ -60,37 +65,61 @@ public class GameLogic {
 		int rowFinish = Math.min( row + 1, BOARD_SIZE - 1 );
 		int colStart  = Math.max( col - 1, START_OF_GRID   );
 		int colFinish = Math.min( col + 1, BOARD_SIZE - 1 );
-
+		
+		
 		for ( int curRow = rowStart; curRow <= rowFinish; curRow++ ) {
-		    for ( int curCol = colStart; curCol <= colFinish; curCol++ ) {
+			for ( int curCol = colStart; curCol <= colFinish; curCol++ ) {
+		    
 				
 		    	//if current neighbour is black, count up liveN.
 		    	// if current neighbour is white, count up deadN.
-		    	if (board[curRow][curCol].getColour() == 1) {
-		    		liveN ++;
-		    	}else {
-		    		deadN ++;
-		    	}
+			    	if (board[curRow][curCol].getColour() == 1) {
+			    		if(status == 1) {
+			    			System.out.println("alive neighbour!");
+			    		}
+			    		//System.out.println("alive neighbour!");
+			    		liveN ++;
+			    	}else {
+			    		
+			    		if(status == 1) {
+			    			System.out.println("dead neighbour!");
+			    		}
+			    		deadN ++;
+			    	}
+		
 		    }
 		}
 		
+		if(status == 1) {
+			System.out.println("liveN:"+liveN+"DeadN:"+deadN);
+		}
 		// IF cell is dead, only return 1 if there are exactly 3 neighbours, else
 		// return 1 only if exactly 2 or 3.
+		// Note: add one if the current square is alive due to it checking itself
 		if (status == 0) {
 			
 			if (liveN == 3) {
-				return 1;
+				System.out.println("Status:"+status+" Changing to Alive");
+				sq.setLive(1);
+			}else {
+				// If none of the requirements met, return 0 to show death.
+				System.out.println("Status:"+status+" Changing to Dead");
+				sq.setLive(0);
 			}
 		}else {
 		
-		if ( liveN == 2 || liveN == 3) {
-			return 1;
+		if ( liveN == 3 || liveN == 4) {
+			System.out.println("Status:"+status+" Changing to Alive");
+			sq.setLive(1);
+		}else {
+			// If none of the requirements met, return 0 to show death.
+			System.out.println("Status:"+status+" Changing to Dead");
+			sq.setLive(0);
 		}
 		
 		}
 		
-		// If none of the requirements met, return 0 to show death.
-		return 0;
+		
 		
 	}
 	
