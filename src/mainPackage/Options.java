@@ -78,10 +78,10 @@ public class Options extends JPanel {
 			}
 		}
 		
-		JLabel lblNewLabel = new JLabel("Game of Life");
-		lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		listPane.add(lblNewLabel);
+		JLabel gameLabel = new JLabel("Game of Life");
+		gameLabel.setVerticalAlignment(SwingConstants.TOP);
+		gameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		listPane.add(gameLabel);
 		
 		JPanel buttonGrid = new JPanel();
 		buttonGrid.setSize(20, 20);
@@ -89,14 +89,14 @@ public class Options extends JPanel {
 		//buttonGrid.setLayout(new GridLayout(1, 2));
 		
 		
-		JButton btnNewButton = new JButton("Start");
-		btnNewButton.setHorizontalAlignment(SwingConstants.LEADING);
-		buttonGrid.add(btnNewButton);
+		JButton startButton = new JButton("Start");
+		startButton.setHorizontalAlignment(SwingConstants.LEADING);
+		buttonGrid.add(startButton);
 		
 		
 		//Change black squares to white(test)
 		
-		btnNewButton.addActionListener(new ActionListener() {
+		startButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
@@ -151,13 +151,13 @@ public class Options extends JPanel {
 		
 		
 		
-		JButton btnNewButton_1 = new JButton("Stop");
-		buttonGrid.add(btnNewButton_1);
+		JButton stopButton = new JButton("Stop");
+		buttonGrid.add(stopButton);
 		listPane.add(buttonGrid);
 		listPane.add(Box.createRigidArea(new Dimension(0,5)));
 		listPane.add(grid);
 		
-	    btnNewButton_1.addActionListener(new ActionListener(){  
+	    stopButton.addActionListener(new ActionListener(){  
 	        public void actionPerformed(ActionEvent e){  
 	                    
 	        }  
