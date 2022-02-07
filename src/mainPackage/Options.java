@@ -52,14 +52,15 @@ public class Options extends JPanel {
 			for (int column = 0; column < BOARD_SIZE; column++) {
 				Square sq = new Square(row, column);
 				board[row][column] = sq;
-				//tempBoard[row][column] = new Square(row, column);
+				
 				
 				//add mouse click lister to switch colour if clicked
 				board[row][column].addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
+						
 						//sets it to change colour too.
-						sq.printCords();
+						sq.changeColourID();
 						sq.repaint();
 						
 						System.out.println(sq.getColour());
@@ -121,13 +122,13 @@ public class Options extends JPanel {
 							// if square should be alive but is dead, repaint
 							if(board[row1][column1].getLive() == 1 && board[row1][column1].getColour() == 0 ) {
 								
-								board[row1][column1].printCords();
+								board[row1][column1].changeColourID();
 								board[row1][column1].repaint();
 							}
 							
 							// if square should be dead but is alive, repaint.
 							if(board[row1][column1].getLive() == 0 && board[row1][column1].getColour() == 1 ) {
-								board[row1][column1].printCords();
+								board[row1][column1].changeColourID();
 								board[row1][column1].repaint();
 							}
 							
@@ -151,18 +152,19 @@ public class Options extends JPanel {
 		
 		
 		
-		JButton stopButton = new JButton("Stop");
-		buttonGrid.add(stopButton);
+		// Stop button if needed (currently not in use)
+		//JButton stopButton = new JButton("Stop");
+		//buttonGrid.add(stopButton);
 		listPane.add(buttonGrid);
 		listPane.add(Box.createRigidArea(new Dimension(0,5)));
 		listPane.add(grid);
 		
-	    stopButton.addActionListener(new ActionListener(){  
+	    /**stopButton.addActionListener(new ActionListener(){  
 	        public void actionPerformed(ActionEvent e){  
 	                    
 	        }  
 	        });  
-		
+		**/
 		
 		this.add(listPane);
 	

@@ -68,7 +68,8 @@ public class Square extends JComponent {
 		this.col = col;
 	}
 	
-	public void printCords() {
+	public void changeColourID() {
+		//Use to print id for checking
 		//System.out.println("Row:"+row+"Col:"+col);
 		
 		//changes statis of sqaure to black if its white
@@ -100,24 +101,6 @@ public class Square extends JComponent {
 	}
 	
 	
-	
-	/**
-	 * Changes colour of square.
-	 * set it to its colour for now. so white = 0 and 1 = black
-	 */
-	
-	/**public void changeColour(Graphics g) {
-		if (colour == 0) {
-			g.setColor(Color.white);
-			g.fillRect(0, 0, SIZE+1, SIZE-2);
-		} else {
-			g.setColor(Color.black);
-			g.fillRect(0, 0, SIZE+1, SIZE-2);
-		}
-
-	}
-	
-	**/
 	
 	
 }
