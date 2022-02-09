@@ -152,19 +152,48 @@ public class Options extends JPanel {
 		
 		
 		
-		// Stop button if needed (currently not in use)
-		//JButton stopButton = new JButton("Stop");
-		//buttonGrid.add(stopButton);
+		// Reset button
+		JButton resetButton = new JButton("reset");
+		buttonGrid.add(resetButton);
 		listPane.add(buttonGrid);
 		listPane.add(Box.createRigidArea(new Dimension(0,5)));
 		listPane.add(grid);
 		
-	    /**stopButton.addActionListener(new ActionListener(){  
+	    resetButton.addActionListener(new ActionListener(){  
 	        public void actionPerformed(ActionEvent e){  
-	                    
+	        	for (int row1 = 0; row1 < BOARD_SIZE; row1++) {
+					for (int column1 = 0; column1 < BOARD_SIZE; column1++) {
+					
+				
+						
+						//if square is alive, reset it to dead
+						if(board[row1][column1].getLive() == 1) {
+							board[row1][column1].setLive(0);
+						}
+						
+						// if square is alive, repaint it to dead
+						if(board[row1][column1].getColour() == 1 ) {
+							board[row1][column1].changeColourID();
+							board[row1][column1].repaint();
+						}
+						
+					
+					
+					}
+					
+			
+				}
+			
+		
+			
+			
+			//board = GameLogic.changeColour(board);
+			main.validate();
+			main.repaint();
+			       
 	        }  
 	        });  
-		**/
+	
 		
 		this.add(listPane);
 	
