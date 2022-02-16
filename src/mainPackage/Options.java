@@ -30,6 +30,9 @@ public class Options extends JPanel {
 	public static final int BOARD_SIZE = 15;
 	public static final int SQUARE_SIZE = 35;
 	private Square[][] board = new Square[BOARD_SIZE][BOARD_SIZE];
+	private int total_count = 0; // total number of squares.
+	
+	private int black_count = 0; // number of black square.
 
 	/**
 	 * Create the main panel with buttons and grid.
@@ -65,6 +68,8 @@ public class Options extends JPanel {
 						
 						System.out.println(sq.getColour());
 						
+						black_count += 1;
+						
 						main.validate();
 						main.repaint();
 
@@ -73,6 +78,8 @@ public class Options extends JPanel {
 				});
 				
 				
+				// add square to total count.
+				total_count += 1;
 				
 				//add to panel
 				grid.add(sq);
@@ -124,12 +131,16 @@ public class Options extends JPanel {
 								
 								board[row1][column1].changeColourID();
 								board[row1][column1].repaint();
+								
+								black_count += 1;
 							}
 							
 							// if square should be dead but is alive, repaint.
 							if(board[row1][column1].getLive() == 0 && board[row1][column1].getColour() == 1 ) {
 								board[row1][column1].changeColourID();
 								board[row1][column1].repaint();
+								
+								black_count -= 1;
 							}
 							
 						
@@ -185,7 +196,8 @@ public class Options extends JPanel {
 				}
 			
 		
-			
+			//reset number of black squares.
+	        black_count = 0;
 			
 			//board = GameLogic.changeColour(board);
 			main.validate();
