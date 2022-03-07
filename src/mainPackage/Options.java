@@ -70,6 +70,11 @@ public class Options extends JPanel {
 						
 						black_count += 1;
 						
+						//print square count in console on update
+						System.out.println("Total:"+total_count);
+						System.out.println("Total:"+black_count);
+						
+						
 						main.validate();
 						main.repaint();
 
@@ -151,6 +156,9 @@ public class Options extends JPanel {
 					}
 				
 			
+				//print square count in console on update
+				System.out.println("Total:"+total_count);
+				System.out.println("Total:"+black_count);
 				
 				
 				//board = GameLogic.changeColour(board);
@@ -198,6 +206,12 @@ public class Options extends JPanel {
 		
 			//reset number of black squares.
 	        black_count = 0;
+			
+	        
+	      //print square count in console on update
+			System.out.println("Total:"+total_count);
+			System.out.println("Total:"+black_count);
+			
 			
 			//board = GameLogic.changeColour(board);
 			main.validate();
