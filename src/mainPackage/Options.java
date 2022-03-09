@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -33,6 +34,20 @@ public class Options extends JPanel {
 	private int total_count = 0; // total number of squares.
 	
 	private int black_count = 0; // number of black square.
+	
+	
+	/**
+	 * 
+	 * Create a popup dialog
+	 * @param infoMessage
+	 * @param titleBar
+	 */
+	 public static void infoBox(String infoMessage, String titleBar)
+	    {
+	        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+	    }
+	
+	
 
 	/**
 	 * Create the main panel with buttons and grid.
@@ -158,7 +173,9 @@ public class Options extends JPanel {
 			
 				//print square count in console on update
 				System.out.println("Total:"+total_count);
-				System.out.println("Total:"+black_count);
+				System.out.println("Black Total:"+black_count);
+				System.out.println("White Total:"+(total_count -black_count));
+				
 				
 				
 				//board = GameLogic.changeColour(board);
@@ -174,6 +191,21 @@ public class Options extends JPanel {
 		// Reset button
 		JButton resetButton = new JButton("reset");
 		buttonGrid.add(resetButton);
+		
+		//open popup for count button
+		JButton countButton = new JButton("count");
+		buttonGrid.add(countButton);
+		
+		//actionlister to open popup
+		  countButton.addActionListener(new ActionListener(){  
+		        public void actionPerformed(ActionEvent e){  
+		        	Options.infoBox("YOUR INFORMATION HERE", "TITLE BAR MESSAGE");
+				       
+		        }  
+		        });  
+		
+		
+		
 		listPane.add(buttonGrid);
 		listPane.add(Box.createRigidArea(new Dimension(0,5)));
 		listPane.add(grid);
