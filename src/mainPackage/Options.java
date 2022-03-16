@@ -196,10 +196,13 @@ public class Options extends JPanel {
 		JButton countButton = new JButton("count");
 		buttonGrid.add(countButton);
 		
-		//actionlister to open popup
+		//actionlister to open popup for population
 		  countButton.addActionListener(new ActionListener(){  
 		        public void actionPerformed(ActionEvent e){  
-		        	Options.infoBox("YOUR INFORMATION HERE", "TITLE BAR MESSAGE");
+		        	Options.infoBox("Total Population: "+ total_count + "\n"
+		        					+"Black Square Population: "+black_count + "\n"
+		        					+ "White Square Population: "+(total_count - black_count) + "\n"
+		        					, "Population Statistics");
 				       
 		        }  
 		        });  
