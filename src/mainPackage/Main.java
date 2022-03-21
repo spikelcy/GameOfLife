@@ -22,6 +22,7 @@ public class Main extends JFrame {
 	public Main() {
 		
 		
+		setTitle("Game of Life");
 		// should set a fixed bounds that looks nice.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

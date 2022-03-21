@@ -106,10 +106,12 @@ public class Options extends JPanel {
 			}
 		}
 		
+		/**
 		JLabel gameLabel = new JLabel("Game of Life");
 		gameLabel.setVerticalAlignment(SwingConstants.TOP);
 		gameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		listPane.add(gameLabel);
+		**/
 		
 		JPanel buttonGrid = new JPanel();
 		buttonGrid.setSize(20, 20);
@@ -189,11 +191,11 @@ public class Options extends JPanel {
 		
 		
 		// Reset button
-		JButton resetButton = new JButton("reset");
+		JButton resetButton = new JButton("Reset");
 		buttonGrid.add(resetButton);
 		
 		//open popup for count button
-		JButton countButton = new JButton("count");
+		JButton countButton = new JButton("Colour Count");
 		buttonGrid.add(countButton);
 		
 		//actionlister to open popup for population
